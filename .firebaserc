@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "iqraproj": {
+      "hosting": {
+        "IQRA_Project": [
+          "iqraproj"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "iqraproj"
+  }
+}

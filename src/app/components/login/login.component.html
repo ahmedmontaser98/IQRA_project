@@ -1,0 +1,87 @@
+<div class="container-fluid">
+  <div class="row mt-5 justify-content-center">
+    <div class="col-md-4">
+      <div class="card shadow">
+        <div class="card-body">
+          <form [formGroup]="loginForm">
+            <div class="mb-3">
+              <h4 class="text-dark text-muted">Login</h4>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                formControlName="email"
+              />
+              <div
+                *ngIf="
+                  loginForm.get('email')?.hasError('required') &&
+                  loginForm.get('email')?.touched
+                "
+                class="text-warning"
+              >
+                Email is required.
+              </div>
+
+              <div
+                *ngIf="
+                  loginForm.get('email')?.hasError('email') &&
+                  loginForm.get('email')?.touched
+                "
+                class="text-warning"
+              >
+                Invalid email format.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label"
+                >Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                formControlName="password"
+              />
+              <div
+                *ngIf="
+                  loginForm.get('password')?.hasError('required') &&
+                  loginForm.get('password')?.touched
+                "
+                class="text-warning"
+              >
+                Password is required.
+              </div>
+              <div
+                *ngIf="
+                  loginForm.get('password')?.hasError('minlength') &&
+                  loginForm.get('password')?.touched
+                "
+                class="text-warning"
+              >
+                Password should be at least 6 characters long.
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn btn-info"
+              (click)="login()"
+              [disabled]="loginForm.invalid"
+            >
+              Login
+            </button>
+            <div class="row">
+              <div class="col-md-6">
+                <a href="/register" style="text-decoration: none"
+                  >Need Account? <span class="text-danger">Register</span></a
+                >
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
